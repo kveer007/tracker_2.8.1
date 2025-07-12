@@ -110,13 +110,14 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* iOS-specific styles - FIXED VERSION */
+/* iOS-specific styles */
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari specific styles */
   body {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
+    /* Fix for iOS viewport height issues */
     min-height: 100vh;
     min-height: -webkit-fill-available;
   }
@@ -129,27 +130,21 @@ body {
   input[type="number"],
   input[type="text"],
   select {
-    font-size: 16px;
+    font-size: 16px; /* Prevent iOS zoom */
     -webkit-appearance: none;
+    border-radius: 0;
   }
   
-  /* Fix iOS button styles - CORRECTED */
+  /* Fix iOS button styles */
   button {
     -webkit-appearance: none;
-    /* REMOVED: border-radius: 0; */
+    border-radius: 0;
   }
   
+  /* Prevent iOS bounce scrolling */
   .app-wrapper {
     overscroll-behavior: none;
   }
-}
-/* Enhanced iOS tab button fixes */
-.tab-btn {
-  border-radius: var(--radius-full) !important;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 .app-wrapper {
@@ -1105,5 +1100,34 @@ input[type="file"]#import-file {
   
   .card {
     padding: var(--spacing-sm);
+  }
+}
+/* Standalone mode fixes */
+@media all and (display-mode: standalone) {
+  :root {
+    --ios-safe-area-top: env(safe-area-inset-top, 44px);
+    --ios-safe-area-bottom: env(safe-area-inset-bottom, 34px);
+  }
+  
+  .app-wrapper {
+    padding-top: max(var(--spacing-md), 44px);
+    padding-bottom: max(var(--spacing-md), 34px);
+  }
+  
+  /* Force proper button styling in standalone mode */
+  .tab-btn {
+    border-radius: var(--radius-full) !important;
+  }
+  
+  .icon-btn {
+    border-radius: var(--radius-full) !important;
+  }
+}
+
+/* Fix the iOS button override that's breaking your design */
+@supports (-webkit-touch-callout: none) {
+  button {
+    -webkit-appearance: none;
+    /* REMOVE: border-radius: 0; ← This line is breaking your buttons! */
   }
 }
