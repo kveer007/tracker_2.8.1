@@ -1,0 +1,380 @@
+/* Workout Tracker Styles */
+
+/* Tab active state */
+.tab-btn.active[data-app="workout"] {
+  background: var(--workout-primary);
+  color: white;
+}
+
+/* Tab button style */
+.action-btn.workout {
+  background: var(--workout-primary);
+}
+
+.action-btn.workout:hover {
+  background: var(--workout-dark);
+}
+
+/* Focus styles for workout tab */
+.workout-app button:focus-visible,
+.workout-app input:focus-visible {
+  outline-color: var(--workout-primary);
+}
+
+/* Active tab color for workout */
+.workout-app .tab-button.active {
+  color: var(--workout-primary);
+}
+
+/* Make workout tabs larger */
+.workout-app .workout-tab {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.workout-app .workout-tab .material-icons-round {
+  margin-right: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+.workout-app .workout-tab.completed {
+  background: rgba(103, 58, 183, 0.1);
+  border-color: var(--workout-primary);
+}
+
+.light-theme .workout-app .workout-tab.completed {
+  background: rgba(103, 58, 183, 0.05);
+}
+
+.workout-app .workout-tab.completed .material-icons-round {
+  color: var(--workout-primary);
+}
+
+/* Main workout tabs container */
+.workout-app .workout-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Count badge */
+.workout-app .count-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--workout-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Workout status text */
+.workout-app .workout-status {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.1rem;
+}
+
+/* Workout Analytics CSS Styles - Complete Updated File */
+
+/* Workout analytics container */
+.workout-analytics-container {
+  padding: var(--spacing-sm) 0;
+}
+
+/* Workout view selector */
+.workout-view-selector {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+/* Dropdown arrow for workout view selector */
+.workout-view-selector::after {
+  content: '▼';
+  font-size: 10px;
+  color: var(--text-secondary);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Section styling */
+.workout-section {
+  margin: var(--spacing-md);
+  padding-top: var(--spacing-sm);
+}
+
+.workout-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 0 8px 0;
+  margin: 0 0 12px 0;
+  color: var(--workout-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Time period selector */
+.time-period-selector {
+  position: relative;
+}
+
+/* Dropdown arrow for time period selector */
+.time-period-selector::after {
+  content: '▼';
+  font-size: 10px;
+  color: var(--text-secondary);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Dropdown styling */
+select.time-period-dropdown {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm);
+  padding: 6px 28px 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 110px;
+  height: 32px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Focus and hover states for dropdowns */
+select.time-period-dropdown:focus,
+select.time-period-dropdown:hover {
+  border-color: var(--workout-primary);
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+/* Chart styling */
+.workout-chart-container {
+  background-color: var(--card-bg);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.workout-chart {
+  height: 180px;
+  position: relative;
+  margin: var(--spacing-md) 0;
+  padding-bottom: var(--spacing-sm);
+}
+
+.workout-chart-y-labels {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 5px 0;
+  z-index: 5;
+}
+
+.workout-chart-axis {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: var(--border-color);
+  left: 30px;
+  z-index: 2;
+}
+
+.workout-chart-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-sm);
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+.workout-chart-point {
+  width: 8px;
+  height: 8px;
+  background-color: var(--workout-primary);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Add horizontal grid lines */
+.workout-chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30px;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent calc(25% - 1px),
+    var(--border-color) calc(25% - 1px),
+    var(--border-color) calc(25%)
+  );
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* Multi-line chart legend */
+.workout-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+  padding-left: 30px;
+}
+
+.workout-legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.workout-color-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+/* Streak styling */
+.workout-streak-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  background-color: var(--card-bg);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.workout-streak-date {
+  width: 100px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.workout-streak-visual {
+  flex: 1;
+  margin: 0 var(--spacing-md);
+  height: 30px;
+  background-color: var(--workout-primary);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Animation for chart rendering */
+@keyframes fadeInChart {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.workout-chart svg {
+  animation: fadeInChart 0.5s ease-out;
+}
+
+.workout-chart-point {
+  animation: fadeInChart 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .workout-chart {
+    height: 150px;
+  }
+  
+  .workout-chart-y-labels {
+    font-size: 10px;
+  }
+  
+  .time-period-dropdown {
+    min-width: 90px;
+    font-size: 12px;
+    padding: 4px 24px 4px 8px;
+  }
+  
+  .workout-streak-date {
+    width: 80px;
+    font-size: 12px;
+  }
+  
+  .workout-legend-item {
+    font-size: 10px;
+  }
+}
+
+/* Additional responsive adjustments for very small screens */
+@media (max-width: 360px) {
+  .workout-section-title {
+    font-size: 16px;
+  }
+  
+  .workout-chart {
+    height: 120px;
+  }
+  
+  .workout-streak-visual {
+    font-size: 12px;
+  }
+  
+  .workout-view-selector,
+  .time-period-selector {
+    width: 100%;
+  }
+  
+  select.time-period-dropdown {
+    width: 100%;
+    min-width: 0;
+  }
+}

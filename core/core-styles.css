@@ -1,0 +1,1109 @@
+:root {
+  /* Modern color palette */
+  --water-primary: #2196F3;
+  --water-light: #BBDEFB;
+  --water-dark: #0D47A1;
+  
+  --protein-primary: #F44336;
+  --protein-light: #FFCDD2;
+  --protein-dark: #B71C1C;
+  
+  --workout-primary: #4CAF50;
+  --workout-light: #C8E6C9;
+  --workout-dark: #2E7D32;
+  
+  --habits-primary: #673AB7;
+  --habits-light: #D1C4E9;
+  --habits-dark: #4527A0;
+  
+  --neutral-primary: #607D8B;
+  --neutral-light: #CFD8DC;
+  --neutral-dark: #455A64;
+  
+  --background: #121212;
+  --card-bg: #1E1E1E;
+  --text-primary: #E0E0E0;
+  --text-secondary: #9E9E9E;
+  --border-color: #333333;
+  
+  --success: #4CAF50;
+  --warning: #FFC107;
+  --danger: #F44336;
+  
+  /* Effects */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  
+  /* Layout */
+  --header-height: 60px;
+  --content-max-width: 500px;
+  
+  /* iOS-specific variables */
+  --ios-safe-area-top: env(safe-area-inset-top);
+  --ios-safe-area-bottom: env(safe-area-inset-bottom);
+  --ios-safe-area-left: env(safe-area-inset-left);
+  --ios-safe-area-right: env(safe-area-inset-right);
+}
+
+/* Light theme */
+.light-theme {
+  --background: #F8F9FA;
+  --card-bg: #FFFFFF;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --border-color: #E0E0E0;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Base styles with iOS optimizations */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+  /* iOS-specific optimizations */
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  color: var(--text-primary);
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  transition: background-color var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  /* iOS-specific fixes */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* iOS-specific styles - FIXED VERSION */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific styles */
+  body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  html {
+    height: -webkit-fill-available;
+  }
+  
+  /* Fix iOS input zoom */
+  input[type="number"],
+  input[type="text"],
+  select {
+    font-size: 16px;
+    -webkit-appearance: none;
+  }
+  
+  /* Fix iOS button styles - CORRECTED */
+  button {
+    -webkit-appearance: none;
+    /* REMOVED: border-radius: 0; */
+  }
+  
+  .app-wrapper {
+    overscroll-behavior: none;
+  }
+}
+/* Enhanced iOS tab button fixes */
+.tab-btn {
+  border-radius: var(--radius-full) !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.app-wrapper {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  width: 100%;
+  /* iOS safe area support */
+  padding-top: max(var(--spacing-md), var(--ios-safe-area-top));
+  padding-bottom: max(var(--spacing-md), var(--ios-safe-area-bottom));
+  padding-left: max(var(--spacing-md), var(--ios-safe-area-left));
+  padding-right: max(var(--spacing-md), var(--ios-safe-area-right));
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.5;
+}
+
+/* Header with iOS safe area support */
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(to right, 
+    #4D96FF 0%, 
+    #B96CDA 50%, 
+    #FF6B6B 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  /* iOS notch support */
+  padding-top: max(var(--spacing-sm), var(--ios-safe-area-top));
+}
+
+.main-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: var(--spacing-sm) 0;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.main-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 70%);
+  z-index: 1;
+}
+
+.main-header .icon-btn {
+  position: absolute;
+  right: var(--spacing-md);
+  color: white;
+  z-index: 2;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  transition: box-shadow var(--transition-fast);
+  /* iOS performance optimization */
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Buttons with iOS optimizations */
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 500;
+  border: none;
+  transition: all var(--transition-fast);
+  /* iOS button fixes */
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  /* Performance optimization */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* iOS active state fix */
+button:active {
+  transform: scale(0.98);
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-primary);
+  /* iOS touch improvements */
+  touch-action: manipulation;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.light-theme .icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* iOS touch feedback */
+.icon-btn:active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0.95);
+}
+
+.light-theme .icon-btn:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  height: 50px;
+  font-size: 1.1rem;
+  padding: 0 var(--spacing-md);
+  /* iOS optimizations */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 44px; /* iOS minimum touch target */
+}
+
+.action-btn.neutral {
+  background: var(--neutral-primary);
+}
+
+.action-btn.neutral:hover {
+  background: var(--neutral-dark);
+}
+
+.action-btn.habits {
+  background: var(--habits-primary);
+}
+
+.action-btn.habits:hover {
+  background: var(--habits-dark);
+}
+
+.danger-btn {
+  background: var(--danger);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-lg);
+  font-weight: 500;
+  min-height: 44px; /* iOS minimum touch target */
+}
+
+.danger-btn:hover {
+  background: #D32F2F;
+}
+
+.reset-btn {
+  background: var(--warning);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  font-weight: 500;
+  font-size: 0.9rem;
+  height: 36px;
+  opacity: 0.9;
+  min-height: 44px; /* iOS minimum touch target */
+}
+
+.reset-btn:hover {
+  background: #FFB300;
+  opacity: 1;
+}
+
+.reset-btn .material-icons-round {
+  font-size: 16px;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.btn-group.vertical {
+  flex-direction: column;
+}
+
+.import-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Tabs with iOS optimizations */
+.tabs {
+  display: flex;
+  background: var(--card-bg);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  /* iOS performance */
+  transform: translateZ(0);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  /* iOS touch improvements */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 44px; /* iOS minimum touch target */
+}
+
+/* iOS responsive tab improvements */
+@media screen and (max-width: 600px) {
+  .tab-btn {
+    padding: var(--spacing-md) 4px;
+    gap: 4px;
+    font-size: 0.9rem;
+    min-width: 0;
+  }
+  
+  .tab-btn span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  .tab-btn .material-icons-round {
+    font-size: 1.3rem;
+    min-width: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .tab-btn {
+    padding: var(--spacing-sm) 2px;
+    font-size: 0.8rem;
+    gap: 2px;
+  }
+  
+  .tab-btn .material-icons-round {
+    font-size: 1.2rem;
+  }
+}
+
+.tab-btn span {
+  white-space: nowrap;
+}
+
+.tab-btn .material-icons-round {
+  font-size: 1.5rem;
+}
+
+.tab-btn.active[data-app="habits"] {
+  background: var(--habits-primary);
+  color: white;
+}
+
+.tab-btn.active[data-app="workout"] {
+  background: var(--workout-primary);
+  color: white;
+}
+
+.tabs-inner {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.tab-button {
+  flex: 1;
+  padding: var(--spacing-md);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  position: relative;
+  min-height: 44px; /* iOS minimum touch target */
+}
+
+.tab-button.active {
+  color: var(--text-primary);
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+}
+
+.tab-content {
+  display: none;
+  padding: var(--spacing-md) 0;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn var(--transition-fast);
+}
+
+/* Form elements with iOS fixes */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 16px; /* Prevent iOS zoom */
+  transition: border-color var(--transition-fast);
+  height: 50px;
+  /* iOS input fixes */
+  -webkit-appearance: none;
+  -webkit-border-radius: var(--radius-md);
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--neutral-primary);
+}
+
+/* App containers */
+.app-container {
+  display: none;
+}
+
+.app-container.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(var(--spacing-sm)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Panels with iOS optimizations */
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  padding: var(--spacing-lg);
+  transform: translateX(100%);
+  transition: transform var(--transition-normal);
+  overflow-y: auto;
+  /* iOS improvements */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  /* iOS safe area support */
+  padding-top: max(var(--spacing-lg), var(--ios-safe-area-top));
+  padding-bottom: max(var(--spacing-lg), var(--ios-safe-area-bottom));
+}
+
+.panel.active {
+  transform: translateX(0);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.close-panel {
+  cursor: pointer;
+}
+
+/* Day entries in history */
+.day-entry {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: var(--spacing-md);
+  transition: background var(--transition-fast);
+  /* iOS touch feedback */
+  touch-action: manipulation;
+}
+
+.light-theme .day-entry {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.day-entry:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.light-theme .day-entry:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.day-entry p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.day-entry p:last-child {
+  margin-bottom: 0;
+}
+
+/* Toast Notifications with iOS improvements */
+#toast-container {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 300px;
+  width: 100%;
+  /* iOS safe area support */
+  bottom: max(var(--spacing-lg), var(--ios-safe-area-bottom));
+}
+
+.toast {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  animation: slideUp 0.3s ease;
+  opacity: 1;
+  /* iOS improvements */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  touch-action: manipulation;
+}
+
+.toast.success {
+  border-left: 4px solid var(--success);
+}
+
+.toast.warning {
+  border-left: 4px solid var(--warning);
+}
+
+.toast.error {
+  border-left: 4px solid var(--danger);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.toast-closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--neutral-primary);
+  outline-offset: 2px;
+}
+
+/* Material Icons Adjustments */
+.material-icons-round {
+  font-family: 'Material Icons Round';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Slide Panel */
+#more-options-panel {
+  z-index: 101;
+}
+
+/* Modal styling with iOS improvements */
+.modal {
+  z-index: 10000;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  /* iOS improvements */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* iOS safe area support */
+  padding-top: var(--ios-safe-area-top);
+  padding-bottom: var(--ios-safe-area-bottom);
+  padding-left: var(--ios-safe-area-left);
+  padding-right: var(--ios-safe-area-right);
+}
+
+.modal[style*="flex"] {
+  display: flex !important;
+}
+
+.modal .modal-content {
+  background: var(--card-bg) !important;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  width: 90%;
+  max-width: 400px;
+  color: var(--text-primary);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10001;
+  /* iOS performance */
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+.modal .modal-input {
+  width: 100% !important;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-family);
+  font-size: 16px; /* Prevent iOS zoom */
+  margin-bottom: var(--spacing-lg);
+  box-sizing: border-box;
+  /* iOS input fixes */
+  -webkit-appearance: none;
+}
+
+.modal .modal-input:focus {
+  outline: none;
+  border-color: var(--habits-primary);
+}
+
+.modal-header {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-bottom: var(--spacing-lg) !important;
+  color: var(--text-primary) !important;
+  text-align: center !important;
+}
+
+.modal-buttons {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: var(--spacing-md) !important;
+}
+
+.modal-button {
+  flex: 1 !important;
+  padding: var(--spacing-md) !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  height: 50px !important;
+  transition: all var(--transition-fast) !important;
+  border: none !important;
+  cursor: pointer !important;
+  min-height: 44px; /* iOS minimum touch target */
+  /* iOS improvements */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.modal-button.cancel {
+  background-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.modal-button.cancel:hover {
+  background-color: #555 !important;
+}
+
+.modal-button.confirm {
+  background-color: var(--habits-primary) !important;
+  color: white !important;
+}
+
+.modal-button.confirm:hover {
+  background-color: var(--habits-dark) !important;
+}
+
+/* Toggle Switch Styling with iOS improvements */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  /* iOS minimum touch target */
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background-color: var(--border-color);
+  transition: .4s;
+  border-radius: 24px;
+  transform: translateY(-50%);
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--card-bg);
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--habits-primary);
+}
+
+.water-app input:checked + .toggle-slider {
+  background-color: var(--water-primary);
+}
+
+.protein-app input:checked + .toggle-slider {
+  background-color: var(--protein-primary);
+}
+
+.workout-app input:checked + .toggle-slider {
+  background-color: var(--workout-primary);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Notification Setting Styles */
+.notification-setting {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-header h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.notification-description {
+  margin-top: var(--spacing-xs);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.inline-setting {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.inline-setting .notification-header {
+  margin: 0;
+}
+
+.inline-setting h4 {
+  font-size: 0.9rem;
+  margin-right: 8px;
+}
+
+.btn-group .notification-setting {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+/* Hide file input but keep it functional */
+input[type="file"]#import-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* iOS-specific device targeting */
+@media screen and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+  /* iPhone X/11/12/13/14 specific fixes */
+  .app-wrapper {
+    /* Account for home indicator on iOS */
+    padding-bottom: max(var(--spacing-md), var(--ios-safe-area-bottom), 20px);
+  }
+  
+  .main-header {
+    /* Account for notch area */
+    margin-top: max(0px, var(--ios-safe-area-top));
+  }
+  
+  /* Larger touch targets for iOS */
+  .tab-btn {
+    min-height: 50px;
+  }
+  
+  button {
+    min-height: 44px;
+  }
+}
+
+/* Performance optimizations for iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  /* High DPI iOS devices */
+  .card, .tab-btn, .action-btn {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+}
+
+/* Dark mode media query for iOS */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* Light mode media query for iOS */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+/* Reduce motion for iOS accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode for iOS accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card {
+    border: 1px solid var(--border-color);
+  }
+  
+  button {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  :root {
+    --spacing-lg: 16px;
+    --spacing-xl: 24px;
+  }
+
+  .app-wrapper {
+    padding: var(--spacing-sm);
+    /* iOS safe area adjustments for smaller screens */
+    padding-top: max(var(--spacing-sm), var(--ios-safe-area-top));
+    padding-bottom: max(var(--spacing-sm), var(--ios-safe-area-bottom));
+  }
+
+  .main-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .card {
+    padding: var(--spacing-md);
+  }
+
+  .panel {
+    max-width: 100%;
+  }
+  
+  .btn-group .notification-setting {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .inline-setting h4 {
+    font-size: 0.8rem;
+  }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .app-wrapper {
+    padding: var(--spacing-xs);
+    padding-top: max(var(--spacing-xs), var(--ios-safe-area-top));
+    padding-bottom: max(var(--spacing-xs), var(--ios-safe-area-bottom));
+  }
+  
+  .main-header {
+    padding: var(--spacing-xs) 0;
+  }
+  
+  .main-header h1 {
+    font-size: 1.1rem;
+  }
+  
+  .card {
+    padding: var(--spacing-sm);
+  }
+}

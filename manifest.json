@@ -1,0 +1,219 @@
+{
+  "name": "Daily Tracker - Health & Habits",
+  "short_name": "Daily Tracker",
+  "description": "Track your daily water intake, protein, workouts and habits. Works offline on iOS and all devices.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "/daily-tracker/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#121212",
+  "theme_color": "#2196F3",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["health", "fitness", "lifestyle", "productivity", "medical"],
+  "icons": [
+    {
+      "src": "./icons/icon-57.png",
+      "sizes": "57x57",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-60.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-76.png",
+      "sizes": "76x76",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-114.png",
+      "sizes": "114x114",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-120.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./screenshots/mobile-water.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Water tracking interface"
+    },
+    {
+      "src": "./screenshots/mobile-habits.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Habits tracking grid"
+    },
+    {
+      "src": "./screenshots/desktop-overview.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop overview"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Water",
+      "short_name": "Water",
+      "description": "Quickly add water intake",
+      "url": "./index.html?tab=water",
+      "icons": [
+        {
+          "src": "./icons/water-shortcut.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Add Protein",
+      "short_name": "Protein",
+      "description": "Quickly add protein intake",
+      "url": "./index.html?tab=protein",
+      "icons": [
+        {
+          "src": "./icons/protein-shortcut.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Log Workout",
+      "short_name": "Workout",
+      "description": "Log a workout session",
+      "url": "./index.html?tab=workout",
+      "icons": [
+        {
+          "src": "./icons/workout-shortcut.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Track Habits",
+      "short_name": "Habits",
+      "description": "Update habit tracking",
+      "url": "./index.html?tab=habits",
+      "icons": [
+        {
+          "src": "./icons/habits-shortcut.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+healthtracker",
+      "url": "./index.html?data=%s"
+    }
+  ],
+  "share_target": {
+    "action": "./share-handler",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "file",
+          "accept": ["text/csv", ".csv"]
+        }
+      ]
+    }
+  }
+}

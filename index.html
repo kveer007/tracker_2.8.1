@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Daily Tracker - Health & Habits</title>
+    
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Track your daily water, protein, workout, and habits. Works offline on iOS and all devices." />
+    <meta name="keywords" content="health tracker, water intake, protein tracker, workout log, habits tracker, iOS PWA, offline app" />
+    <meta name="author" content="Daily Tracker" />
+    
+    <!-- iOS-Specific PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Daily Tracker" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#2196F3" />
+    <meta name="msapplication-TileColor" content="#2196F3" />
+    <meta name="msapplication-navbutton-color" content="#2196F3" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json" />
+    
+    <!-- iOS Icons - Comprehensive Set -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="./icons/icon-167.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./icons/icon-152.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./icons/icon-144.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./icons/icon-120.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./icons/icon-114.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./icons/icon-76.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/icon-72.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./icons/icon-60.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./icons/icon-57.png" />
+    
+    <!-- iOS Splash Screens -->
+    <!-- iPhone 14 Pro Max -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1290x2796.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 932px) and (device-height: 430px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2796x1290.png" />
+    
+    <!-- iPhone 14 Pro -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1179x2556.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 852px) and (device-height: 393px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2556x1179.png" />
+    
+    <!-- iPhone 14 Plus -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1284x2778.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 926px) and (device-height: 428px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2778x1284.png" />
+    
+    <!-- iPhone 14 & 13 & 12 -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1170x2532.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 844px) and (device-height: 390px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2532x1170.png" />
+    
+    <!-- iPhone 13 mini & 12 mini -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1125x2436.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 812px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2436x1125.png" />
+    
+    <!-- iPhone 11 Pro Max & XS Max -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1242x2688.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2688x1242.png" />
+    
+    <!-- iPhone 11 & XR -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-828x1792.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-1792x828.png" />
+    
+    <!-- iPhone 11 Pro & X & XS -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1125x2436.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 812px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2436x1125.png" />
+    
+    <!-- iPhone 8 Plus -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="./icons/splash-1242x2208.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 736px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)" href="./icons/splash-2208x1242.png" />
+    
+    <!-- iPhone 8 & 7 & 6s & 6 -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-750x1334.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 667px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-1334x750.png" />
+    
+    <!-- iPhone SE -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-640x1136.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 568px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-1136x640.png" />
+    
+    <!-- iPad Pro 12.9" -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-2048x2732.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1366px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-2732x2048.png" />
+    
+    <!-- iPad Pro 11" -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-1668x2388.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1194px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-2388x1668.png" />
+    
+    <!-- iPad Pro 10.5" -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-1668x2224.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1112px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-2224x1668.png" />
+    
+    <!-- iPad -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="./icons/splash-1536x2048.png" />
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 768px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="./icons/splash-2048x1536.png" />
+    
+    <!-- Standard Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/icon-16.png" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileImage" content="./icons/icon-144.png" />
+    <meta name="msapplication-config" content="./browserconfig.xml" />
+    
+    <!-- Fonts and External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    
+    <!-- Preload critical resources for iOS -->
+    <link rel="preload" href="./core/core-styles.css" as="style" />
+    <link rel="preload" href="./core/core-scripts.js" as="script" />
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./core/core-styles.css" />
+    <link rel="stylesheet" href="./trackers/trackers-styles.css" />
+    <link rel="stylesheet" href="./workouts/workouts-styles.css" />
+    <link rel="stylesheet" href="./habits/habits-styles.css" />
+    
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  </head>
+  <body>
+    <!-- iOS-specific no-script fallback -->
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+        <h1>Daily Tracker</h1>
+        <p>This app requires JavaScript to function properly on iOS.</p>
+        <p>Please enable JavaScript in your Safari settings and reload the page.</p>
+      </div>
+    </noscript>
+
+    <!-- App Wrapper with iOS safe area support -->
+    <div class="app-wrapper">
+      <!-- Main Header -->
+      <header class="main-header">
+        <h1>Daily Tracker</h1>
+        <button id="more-options-toggle" class="icon-btn" aria-label="More options">
+          <i class="material-icons-round">more_vert</i>
+        </button>
+      </header>
+      
+      <!-- Global Tab Navigation -->
+      <nav class="tabs">
+        <button id="water-tab-btn" class="tab-btn active" data-app="water">
+          <i class="material-icons-round">water_drop</i>
+          <span>Water</span>
+        </button>
+        <button id="protein-tab-btn" class="tab-btn" data-app="protein">
+          <svg class="protein-icon" width="24" height="24" viewBox="0 0 562 471" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0 C0.69174316 0.23106445 1.38348633 0.46212891 2.09619141 0.70019531 C20.8650074 7.04020327 42.54468578 14.75689293 52.68359375 33.03515625 C59.48402338 48.67412646 59.06380259 62.97839295 54 79 C51.55749767 84.98834191 47.72386921 89.8066276 43.6875 94.80859375 C42.11487493 96.85082214 40.80114545 98.90363656 39.5 101.125 C34.32051108 109.51243045 28.5573268 113.52279182 19 116 C14.76138595 116.48312308 10.5935663 116.47042283 6.33203125 116.390625 C5.17120529 116.38496521 4.01037933 116.37930542 2.81437683 116.37347412 C-0.85335461 116.35127982 -4.52006931 116.30111402 -8.1875 116.25 C-10.69074099 116.22991316 -13.19399746 116.21166625 -15.69726562 116.1953125 C-21.79851756 116.15147074 -27.89918611 116.08473019 -34 116 C-33.34 117.98 -32.68 119.96 -32 122 C-31.34 122 -30.68 122 -30 122 C-29.71914551 122.5669458 -29.43829102 123.1338916 -29.14892578 123.71801758 C-24.04574752 134.00614917 -18.91212541 144.27484084 -13.5625 154.4375 C-13.16240723 155.19844971 -12.76231445 155.95939941 -12.35009766 156.7434082 C-10.60749138 160.03732327 -8.83927212 163.30915258 -6.98046875 166.5390625 C-1.50021185 176.11600059 3.5255479 185.96523176 8.5 195.8125 C8.83805664 196.47564209 9.17611328 197.13878418 9.52441406 197.82202148 C11.03359307 200.83452693 12.39582996 203.66867354 13 207 C13.66 207 14.32 207 15 207 C15 207.99 15 208.98 15 210 C15.99 209.67 16.98 209.34 18 209 C19.44253305 206.05594509 19.44253305 206.05594509 20.625 202.5625 C21.05039063 201.38816406 21.47578125 200.21382812 21.9140625 199.00390625 C22.27242187 198.01261719 22.63078125 197.02132812 23 196 C23.33 195.34 23.66 194.68 24 194 C24.66 194 25.32 194 26 194 C26.26167969 193.12472656 26.52335938 192.24945313 26.79296875 191.34765625 C29.48745845 183.87458933 34.20077566 177.37489086 40 172 C41.27926568 170.54905797 42.5491872 169.08985298 43.8125 167.625 C62.93153872 146.04474175 91.20317992 132.08764674 120 130 C147.67120283 128.86800786 175.40024677 132.79666221 198 150 C199.89494378 151.35541118 201.79079644 152.70955248 203.6875 154.0625 C207.97824906 157.20132921 212.11170473 160.37092442 216 164 C216 164.66 216 165.32 216 166 C216.58265625 166.2371875 217.1653125 166.474375 217.765625 166.71875 C220.47552837 168.2726806 221.86530802 170.01929431 223.75 172.5 C224.36359375 173.2940625 224.9771875 174.088125 225.609375 174.90625 C227 177 227 177 227 179 C227.99 179.33 228.98 179.66 230 180 C231.52008491 182.27286119 232.8711532 184.48986529 234.1875 186.875 C234.73954102 187.83212891 234.73954102 187.83212891 235.30273438 188.80859375 C238 193.60262059 238 193.60262059 238 197 C238.66 197 239.32 197 240 197 C252.93638928 232.97319718 255.56541267 267.10861889 240 303 C239.34 303 238.68 303 238 303 C237.91878906 303.67417969 237.83757812 304.34835937 237.75390625 305.04296875 C236.77189506 308.89469141 234.96156811 311.91807836 232.9375 315.3125 C232.56044922 315.95767578 232.18339844 316.60285156 231.79492188 317.26757812 C230.86962507 318.84878152 229.93567319 320.4249146 229 322 C228.34 322 227.68 322 227 322 C227 322.66 227 323.32 227 324 C226.34 324 225.68 324 225 324 C224.6596875 325.051875 224.6596875 325.051875 224.3125 326.125 C221.23368195 332.86907764 215.58582393 337.34842479 210 342 C209.2471875 342.64066406 208.494375 343.28132813 207.71875 343.94140625 C172.12966082 373.46417341 132.21697986 371.20465328 88.60310173 370.96532798 C84.53737377 370.94356391 80.47163322 370.92504777 76.40588999 370.90639621 C66.81092632 370.86220536 57.21600729 370.81197365 47.62109375 370.75805664 C37.76719855 370.70281064 27.91329685 370.65885341 18.05932379 370.62020558 C9.54485533 370.58635702 1.03044457 370.54502009 -7.48396063 370.49788028 C-12.5461702 370.46995456 -17.60835173 370.44485814 -22.67060852 370.4272213 C-27.42496923 370.41037251 -32.17919027 370.38410567 -36.93346405 370.35091019 C-38.66550254 370.34034385 -40.39756434 370.33297363 -42.12963104 370.32924461 C-61.91691467 370.28223244 -79.23192483 367.79903265 -97 358.5625 C-98.04099854 358.02387329 -98.04099854 358.02387329 -99.10302734 357.47436523 C-103.31896844 355.19026385 -106.89208553 352.59068494 -110.45703125 349.3840332 C-111.92016491 348.07161157 -113.45895387 346.84499486 -115 345.625 C-121.16124138 340.23391379 -126.01895709 334.13842177 -130 327 C-130.72509766 325.70835937 -130.72509766 325.70835937 -131.46484375 324.390625 C-135.48945778 316.81247136 -138.16458663 309.10857161 -140.46386719 300.87841797 C-140.93079477 299.24247042 -141.44933857 297.62142925 -141.9765625 296.00390625 C-144.20996723 288.31222735 -144.2785637 280.78252253 -144.3125 272.8125 C-144.31805908 271.70729004 -144.32361816 270.60208008 -144.3293457 269.46337891 C-144.27021835 262.7228603 -143.52709259 256.55277685 -142 250 C-141.69649326 248.47761534 -141.398242 246.95417273 -141.10546875 245.4296875 C-138.78026947 233.77590491 -135.88628918 222.49948733 -131.609375 211.38671875 C-129.38542056 205.52085234 -127.63543792 199.49954251 -125.8125 193.5 C-125.44447266 192.29601562 -125.07644531 191.09203125 -124.69726562 189.8515625 C-123.79592507 186.90172068 -122.89690034 183.95119428 -122 181 C-121.34 181 -120.68 181 -120 181 C-119.885354 180.00339355 -119.77070801 179.00678711 -119.65258789 177.97998047 C-119.07191991 173.94156914 -117.88661682 170.16801603 -116.55859375 166.3203125 C-116.31512207 165.59824615 -116.07165039 164.87617981 -115.82080078 164.13223267 C-115.0316571 161.79466028 -114.23451916 159.45989742 -113.4375 157.125 C-112.34091624 153.88376651 -111.2485851 150.64110491 -110.15625 147.3984375 C-109.88509872 146.59531128 -109.61394745 145.79218506 -109.33457947 144.96472168 C-106.62652155 136.92884917 -104.04214511 128.85595484 -101.49975586 120.76611328 C-100.26009016 116.84148115 -99.00946962 112.94344786 -97.53125 109.1015625 C-95.05230835 102.63746606 -93.10929931 95.98121205 -91.04882812 89.375 C-89.23401571 83.62634565 -87.26265952 78.02255283 -84.97094727 72.44775391 C-83.26831317 68.15542064 -81.86545254 63.76475074 -80.4375 59.375 C-78.63057408 53.84604708 -76.79765459 48.34633341 -74.72143555 42.91210938 C-73.98593381 40.96271866 -73.29198563 39.00228652 -72.60546875 37.03515625 C-69.88962835 29.35486619 -67.15358978 22.42025522 -62 16 C-61.39285156 15.22011719 -60.78570312 14.44023438 -60.16015625 13.63671875 C-45.77599218 -3.7666956 -20.55598029 -6.99250475 0 0 Z" fill="currentColor" transform="translate(233, 55)"/>
+          </svg>
+          <span>Protein</span>
+        </button>        
+        <button id="workout-tab-btn" class="tab-btn" data-app="workout">
+          <i class="material-icons-round">fitness_center</i>
+          <span>Workout</span>
+        </button>
+        <button id="habits-tab-btn" class="tab-btn" data-app="habits">
+          <i class="material-icons-round">check_circle</i>
+          <span>Habits</span>
+        </button>
+      </nav>
+
+      <!-- Water Tracker App -->
+      <section id="water-app" class="app-container water-app active">
+        <div class="card main-card">
+          <div class="card-header">
+            <button class="icon-btn" id="water-history-toggle" aria-label="History">
+              <i class="material-icons-round">history</i>
+            </button>
+            <h2>Water Intake</h2>
+            <button class="icon-btn" id="water-settings-toggle" aria-label="Settings">
+              <i class="material-icons-round">settings</i>
+            </button>
+          </div>
+          
+          <!-- Goal Visual -->
+          <div class="goal-visual">
+            <div class="circular-progress" id="water-circular-progress">
+              <svg viewBox="0 0 100 100">
+                <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="progress-bar" id="water-progress-circle" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="progress-content">
+                <span id="water-total">0</span>
+                <span class="unit">ml</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="progress-text">
+            <p>Daily Goal: <span id="water-goal-display">0</span> ml</p>
+            <p>Remaining: <span id="water-remaining">0</span> ml</p>
+          </div>
+          
+          <!-- Quick Add Buttons -->
+          <div class="quick-add">
+            <button class="action-btn water" data-action="water-add" data-amount="50">
+              +50ml
+            </button>
+            <button class="action-btn water" data-action="water-add" data-amount="100">
+              +100ml
+            </button>
+            <button class="action-btn water" data-action="water-add" data-amount="250">
+              +250ml
+            </button>
+            <button class="action-btn water" data-action="water-add" data-amount="500">
+              +500ml
+            </button>
+          </div>
+          
+          <!-- Custom Add -->
+          <div class="custom-add">
+            <input type="number" id="water-manual" placeholder="Custom amount" min="0" />
+            <button id="water-add-manual" class="action-btn water">Add</button>
+          </div>
+          
+          <button id="water-reset-daily" class="reset-btn">
+            <i class="material-icons-round">refresh</i> Reset Today
+          </button>
+        </div>
+
+        <!-- Water Settings Panel -->
+<div class="panel settings-panel" id="water-settings-section">
+  <div class="panel-header">
+    <h3>Water Settings</h3>
+    <button class="close-panel icon-btn" aria-label="Close">
+      <i class="material-icons-round">close</i>
+    </button>
+  </div>
+  
+  <div class="form-group">
+    <label for="water-goal">Daily Goal (ml)</label>
+    <input type="number" id="water-goal" placeholder="Enter goal in ml" min="0" />
+  </div>
+
+  <div class="btn-group">
+    <button id="water-set-goal" class="action-btn water">Save Goal</button>
+  </div>
+
+  <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--spacing-lg) 0;">
+
+  <!-- Custom Interval Reminder (moved from global settings) -->
+  <div class="form-group">
+    <label for="water-reminder-time">Custom Reminder Interval (minutes)</label>
+    <input type="number" id="water-reminder-time" placeholder="Minutes between reminders" min="0" />
+  </div>
+  
+  <div class="btn-group">
+  <button id="water-set-reminder" class="action-btn water">
+    <i class="material-icons-round">alarm</i> Set Reminder
+  </button>
+  <div class="notification-setting inline-setting">
+    <div class="notification-header">
+      <h4>Enable Notifications</h4>
+      <label class="toggle-switch" id="global-enable-notifications-container">
+        <input type="checkbox" id="global-enable-notifications-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+</div>
+  
+  <hr style="border: none; border-top: 1px solid var(--border-color); margin: var(--spacing-lg) 0;">
+  
+  <div class="btn-group">
+    <button id="water-reset-data" class="danger-btn">
+      <i class="material-icons-round">delete</i> Reset All Data
+    </button>
+  </div>
+</div>
+
+        <!-- Water History Panel -->
+        <div class="panel history-panel" id="water-history-popup">
+          <div class="panel-header">
+            <h3>Water History</h3>
+            <button class="close-panel icon-btn" aria-label="Close">
+              <i class="material-icons-round">close</i>
+            </button>
+          </div>
+          
+          <div class="tabs-inner">
+            <button class="tab-button active" data-tab="water-daily-history">
+              Weekly Summary
+            </button>
+            <button class="tab-button" data-tab="water-current-intake">
+              Today's Logs
+            </button>
+          </div>
+          
+          <div class="tab-content" id="water-daily-history"></div>
+          <div class="tab-content" id="water-current-intake"></div>
+        </div>
+      </section>
+
+      <!-- Protein Tracker App -->
+      <section id="protein-app" class="app-container protein-app">
+        <div class="card main-card">
+          <div class="card-header">
+            <button class="icon-btn" id="protein-history-toggle" aria-label="History">
+              <i class="material-icons-round">history</i>
+            </button>
+            <h2>Protein Intake</h2>
+            <button class="icon-btn" id="protein-settings-toggle" aria-label="Settings">
+              <i class="material-icons-round">settings</i>
+            </button>
+          </div>
+          
+          <!-- Goal Visual -->
+          <div class="goal-visual">
+            <div class="circular-progress" id="protein-circular-progress">
+              <svg viewBox="0 0 100 100">
+                <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="progress-bar" id="protein-progress-circle" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="progress-content">
+                <span id="protein-total">0</span>
+                <span class="unit">g</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="progress-text">
+            <p>Daily Goal: <span id="protein-goal-display">0</span> g</p>
+            <p>Remaining: <span id="protein-remaining">0</span> g</p>
+          </div>
+          
+          <!-- Quick Add Buttons -->
+          <div class="quick-add">
+            <button class="action-btn protein" data-action="protein-add" data-amount="1">
+              +1g
+            </button>
+            <button class="action-btn protein" data-action="protein-add" data-amount="5">
+              +5g
+            </button>
+            <button class="action-btn protein" data-action="protein-add" data-amount="10">
+              +10g
+            </button>
+            <button class="action-btn protein" data-action="protein-add" data-amount="20">
+              +20g
+            </button>
+          </div>
+          
+          <!-- Custom Add -->
+          <div class="custom-add">
+            <input type="number" id="protein-manual" placeholder="Custom amount" min="0" />
+            <button id="protein-add-manual" class="action-btn protein">Add</button>
+          </div>
+          
+          <button id="protein-reset-daily" class="reset-btn">
+            <i class="material-icons-round">refresh</i> Reset Today
+          </button>
+        </div>
+
+        <!-- Protein Settings Panel -->
+        <div class="panel settings-panel" id="protein-settings-section">
+          <div class="panel-header">
+            <h3>Protein Settings</h3>
+            <button class="close-panel icon-btn" aria-label="Close">
+              <i class="material-icons-round">close</i>
+            </button>
+          </div>
+          
+          <div class="form-group">
+            <label for="protein-goal">Daily Goal (g)</label>
+            <input type="number" id="protein-goal" placeholder="Enter goal in grams" min="0" />
+          </div>
+          
+          <div class="btn-group">
+            <button id="protein-set-goal" class="action-btn protein">Save Goal</button>
+            <button id="protein-reset-data" class="danger-btn">
+              <i class="material-icons-round">delete</i> Reset All Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Protein History Panel -->
+        <div class="panel history-panel" id="protein-history-popup">
+          <div class="panel-header">
+            <h3>Protein History</h3>
+            <button class="close-panel icon-btn" aria-label="Close">
+              <i class="material-icons-round">close</i>
+            </button>
+          </div>
+          
+          <div class="tabs-inner">
+            <button class="tab-button active" data-tab="protein-daily-history">
+              Weekly Summary
+            </button>
+            <button class="tab-button" data-tab="protein-current-intake">
+              Today's Logs
+            </button>
+          </div>
+          
+          <div class="tab-content" id="protein-daily-history"></div>
+          <div class="tab-content" id="protein-current-intake"></div>
+        </div>
+      </section>
+      
+      <!-- Workout Tracker App -->
+      <section id="workout-app" class="app-container workout-app">
+        <div class="card main-card">
+          <div class="card-header">
+            <button class="icon-btn" id="workout-history-toggle" aria-label="History">
+              <i class="material-icons-round">history</i>
+            </button>
+            <h2>Workout Tracker</h2>
+            <button class="icon-btn" id="workout-settings-toggle" aria-label="Settings">
+              <i class="material-icons-round">settings</i>
+            </button>
+          </div>
+          
+          <!-- Workout Tabs Container -->
+          <div class="workout-tabs-container" id="workout-tabs-container">
+            <!-- Workout tabs will be dynamically generated here -->
+          </div>
+          
+          <div class="workout-status">
+            <p>Tap a workout to mark it as complete. Complete all workouts to reset.</p>
+          </div>
+          
+          <button id="workout-reset-daily" class="reset-btn">
+            <i class="material-icons-round">refresh</i> Reset Today
+          </button>
+        </div>
+
+        <!-- Workout Settings Panel -->
+        <div class="panel settings-panel" id="workout-settings-section">
+          <div class="panel-header">
+            <h3>Workout Settings</h3>
+            <button class="close-panel icon-btn" aria-label="Close">
+              <i class="material-icons-round">close</i>
+            </button>
+          </div>
+          
+          <div class="btn-group vertical">
+            <button id="workout-reset-tabs" class="action-btn workout">
+              <i class="material-icons-round">refresh</i> Reset Tabs Only
+            </button>
+            
+            <button id="workout-reset-data" class="danger-btn">
+              <i class="material-icons-round">delete</i> Reset All Data
+            </button>
+          </div>
+        </div>
+
+       <!-- Workout History Panel -->
+<div class="panel history-panel" id="workout-history-popup">
+  <div class="panel-header">
+    <h3>Workout History</h3>
+    <button class="close-panel icon-btn" aria-label="Close">
+      <i class="material-icons-round">close</i>
+    </button>
+  </div>
+  
+  <div class="tabs-inner">
+    <button class="tab-button active" data-tab="workout-daily-history">
+      Daily Summary
+    </button>
+    <button class="tab-button" data-tab="workout-analytics">
+      Workout Analytics
+    </button>
+  </div>
+  
+  <div class="tab-content active" id="workout-daily-history"></div>
+  <div class="tab-content" id="workout-analytics">
+    <div class="workout-analytics-container">
+      <!-- Workout selection dropdown -->
+      <div class="workout-view-selector">
+        <select id="workout-view-type" class="time-period-dropdown">
+          <option value="all" selected>All Workouts</option>
+          <option value="comparison">All Comparison</option>
+          <!-- Individual workout options will be added dynamically -->
+        </select>
+      </div>
+      
+      <!-- Graph Section -->
+      <div class="workout-section">
+        <div class="workout-section-title">
+          <span>Graph</span>
+          <div class="time-period-selector">
+            <select id="workout-time-period" class="time-period-dropdown">
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="quarterly">Quarterly</option>
+               <option value="yearly">Yearly</option>
+             </select>
+          </div>
+        </div>
+        <div class="workout-chart-container">
+          <div class="workout-chart" id="workout-chart">
+            <div class="workout-chart-y-labels">
+              <span>30</span>
+              <span>20</span>
+              <span>10</span>
+              <span>0</span>
+            </div>
+            <div class="workout-chart-axis"></div>
+            <!-- Chart will be dynamically rendered here -->
+          </div>
+          <div class="workout-chart-labels" id="workout-chart-labels">
+            <!-- Labels will be dynamically rendered here -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Streaks Section -->
+      <div class="workout-section">
+        <div class="workout-section-title">Best streaks</div>
+        <div class="workout-streak-bars" id="workout-streaks">
+          <!-- Streaks will be dynamically rendered here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </section>
+      
+      <!-- Habits Tracker App -->
+      <section id="habits-app" class="app-container habits-app">
+        <div id="habits-main-view">
+          <div class="card main-card">
+            <div class="card-header">
+              <button class="icon-btn" id="habits-add-button" aria-label="Add">
+                <i class="material-icons-round">add</i>
+              </button>
+              <h2>Habits Tracker</h2>
+              <button class="icon-btn" id="habits-rearrange-button" aria-label="Rearrange">
+                <i class="material-icons-round">reorder</i>
+              </button>
+            </div>
+            
+            <div class="date-selector" id="habits-date-selector">
+              <!-- Date navigation and dates will be dynamically added here -->
+            </div>
+            
+            <div id="habits-container">
+              <!-- Habits will be dynamically added here -->
+            </div>
+          </div>
+        </div>
+        
+        <div id="habits-detail-view">
+          <div class="card main-card">
+            <div class="card-header">
+              <button class="icon-btn" id="habits-back-button" aria-label="Back">
+                <i class="material-icons-round">arrow_back</i>
+              </button>
+              <h2 id="habit-detail-title">Habit Name</h2>
+              <div class="habits-detail-buttons">
+                <button class="icon-btn" id="habits-delete-button" aria-label="Delete">
+                  <i class="material-icons-round">delete</i>
+                </button>
+                <button class="icon-btn" id="habits-edit-button" aria-label="Edit">
+                  <i class="material-icons-round">edit</i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Graph Section - UPDATED with the dropdown -->
+            <div class="habits-section">
+              <div class="habits-section-title">
+                <span>Graph</span>
+                <div class="time-period-selector">
+                  <select id="graph-time-period" class="time-period-dropdown">
+                    <option value="weekly" selected>Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="yearly">Yearly</option>
+                  </select>
+                </div>
+              </div>
+              <div class="habits-chart-container">
+                <div class="habits-chart" id="habit-chart">
+                  <div class="habits-chart-y-labels">
+                    <span>30</span>
+                    <span>20</span>
+                    <span>10</span>
+                    <span>0</span>
+                  </div>
+                  <div class="habits-chart-axis"></div>
+                  <!-- Chart will be dynamically rendered here -->
+                </div>
+                <div class="habits-chart-labels" id="habits-chart-labels">
+                  <!-- Labels will be dynamically rendered here -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- Calendar Section -->
+            <div class="habits-section">
+              <div class="habits-section-title">
+                <span>History</span>
+                <div class="habits-calendar-controls">
+                  <button class="icon-btn habits-small-button" id="habits-edit-calendar-button">
+                    <i class="material-icons-round">edit</i>
+                  </button>
+                </div>
+              </div>
+              <div class="habits-calendar-container">
+                <div class="habits-calendar-scroll-content" id="habits-calendar-scroll-content">
+                  <!-- Calendar months will be dynamically added here -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- Streaks Section -->
+            <div class="habits-section">
+              <div class="habits-section-title">Best streaks</div>
+              <div class="habits-streak-bars" id="habit-streaks">
+                <!-- Streaks will be dynamically rendered here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Data Options Panel -->
+<div class="panel slide-panel" id="more-options-panel">
+  <div class="panel-header">
+    <h3>Options</h3>
+    <button class="close-panel icon-btn" aria-label="Close">
+      <i class="material-icons-round">close</i>
+    </button>
+  </div>
+  
+  <!-- New notifications button -->
+  <div class="btn-group vertical">
+    <button id="notifications-settings-toggle" class="action-btn neutral">
+      <i class="material-icons-round">notifications</i> Notifications
+    </button>
+  
+    <button id="export-data" class="action-btn neutral">
+      <i class="material-icons-round">file_download</i> Export Data
+    </button>
+    
+        <input type="file" id="import-file" accept=".csv" />
+    <label for="import-file" class="action-btn neutral import-btn">
+      <i class="material-icons-round">file_upload</i> Import Data
+    </label>
+    
+    <button id="toggle-theme" class="action-btn neutral">
+      <i class="material-icons-round">dark_mode</i> Toggle Theme
+    </button>
+  </div>
+</div>
+    </div>
+    <!-- Notifications Panel -->
+<div class="panel slide-panel" id="notifications-panel">
+  <div class="panel-header">
+    <h3>Notifications</h3>
+    <button class="close-panel icon-btn" aria-label="Close">
+      <i class="material-icons-round">close</i>
+    </button>
+  </div>
+  
+  <!-- Supplements Reminder -->
+  <div class="notification-setting">
+    <div class="notification-header">
+      <h4>Supplements Reminder</h4>
+      <label class="toggle-switch">
+        <input type="checkbox" id="supplements-reminder-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <p class="notification-description">Receive reminders at 9am and 10pm daily</p>
+  </div>
+  
+  <!-- Water Reminder -->
+  <div class="notification-setting">
+    <div class="notification-header">
+      <h4>Water Intake Alert</h4>
+      <label class="toggle-switch">
+        <input type="checkbox" id="water-reminder-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <p class="notification-description">Reminder at 8pm if daily goal is not met</p>
+  </div>
+  
+  <!-- Protein Reminder -->
+  <div class="notification-setting">
+    <div class="notification-header">
+      <h4>Protein Intake Alert</h4>
+      <label class="toggle-switch">
+        <input type="checkbox" id="protein-reminder-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <p class="notification-description">Reminder at 8pm if daily goal is not met</p>
+  </div>
+  
+  <div class="notification-setting">
+  <div class="notification-header">
+    <h4>Enable All Notifications</h4>
+    <label class="toggle-switch" id="global-enable-notifications-container">
+      <input type="checkbox" id="global-enable-notifications-toggle">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+  <p class="notification-description">Allow the app to send you notifications</p>
+</div>
+</div>
+
+    <!-- FIXED Add Habit Modal -->
+    <div id="add-habit-modal" class="modal" style="display: none;">
+      <div class="modal-backdrop">
+        <div class="modal-content">
+          <div class="modal-header" id="modal-title">Add New Habit</div>
+          
+          <input type="text" id="habit-name-input" class="modal-input" placeholder="Enter habit name">
+          
+          <div class="habits-color-options">
+            <!-- Row 1 -->
+            <div class="habits-color-option red" data-color="red"></div>
+            <div class="habits-color-option coral" data-color="coral"></div>
+            <div class="habits-color-option pink" data-color="pink"></div>
+            <div class="habits-color-option lightpink" data-color="lightpink"></div>
+            <div class="habits-color-option purple" data-color="purple"></div>
+            
+            <!-- Row 2 -->
+            <div class="habits-color-option navy" data-color="navy"></div>
+            <div class="habits-color-option skyblue" data-color="skyblue"></div>
+            <div class="habits-color-option royalblue" data-color="royalblue"></div>
+            <div class="habits-color-option blue" data-color="blue"></div>
+            <div class="habits-color-option teal" data-color="teal"></div>
+            
+            <!-- Row 3 -->
+            <div class="habits-color-option lightblue" data-color="lightblue"></div>
+            <div class="habits-color-option lightgreen" data-color="lightgreen"></div>
+            <div class="habits-color-option green" data-color="green"></div>
+            <div class="habits-color-option darkgreen" data-color="darkgreen"></div>
+            <div class="habits-color-option seagreen" data-color="seagreen"></div>
+            
+            <!-- Row 4 -->
+            <div class="habits-color-option yellow" data-color="yellow"></div>
+            <div class="habits-color-option orange" data-color="orange"></div>
+            <div class="habits-color-option tangerine" data-color="tangerine"></div>
+            <div class="habits-color-option darkorange" data-color="darkorange"></div>
+            <div class="habits-color-option gray" data-color="gray"></div>
+            
+            <!-- Default white color -->
+            <div class="habits-color-option default selected" data-color="default"></div>
+          </div>
+          
+          <div class="modal-buttons">
+            <button class="modal-button cancel" id="habits-cancel-button">Cancel</button>
+            <button class="modal-button confirm" id="habits-confirm-button">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Toasts Container -->
+    <div id="toast-container"></div>
+
+    <!-- JavaScript Files -->
+    <script src="./core/core-scripts.js"></script>
+    <script src="./core/ui.js"></script>
+    <script src="./core/notification.js"></script>
+    <script src="./trackers/trackers-scripts.js"></script>
+    <script src="./workouts/workouts-scripts.js"></script>
+    <script src="./habits/habits-scripts.js"></script>
+    
+    <!-- iOS-specific script for handling URL parameters -->
+    <script>
+      // Handle URL parameters for iOS shortcuts
+      document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tab = urlParams.get('tab');
+        
+        if (tab && ['water', 'protein', 'workout', 'habits'].includes(tab)) {
+          // Switch to the specified tab
+          const tabButton = document.querySelector(`[data-app="${tab}"]`);
+          if (tabButton && !tabButton.classList.contains('active')) {
+            tabButton.click();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
