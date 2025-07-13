@@ -1,3 +1,4 @@
+/* CSS Variables */
 :root {
   /* Modern color palette */
   --water-primary: #2196F3;
@@ -60,10 +61,10 @@
   --content-max-width: 500px;
   
   /* iOS-specific variables */
-  --ios-safe-area-top: env(safe-area-inset-top);
-  --ios-safe-area-bottom: env(safe-area-inset-bottom);
-  --ios-safe-area-left: env(safe-area-inset-left);
-  --ios-safe-area-right: env(safe-area-inset-right);
+  --ios-safe-area-top: env(safe-area-inset-top, 0px);
+  --ios-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --ios-safe-area-left: env(safe-area-inset-left, 0px);
+  --ios-safe-area-right: env(safe-area-inset-right, 0px);
 }
 
 /* Light theme */
@@ -110,7 +111,47 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* iOS-specific styles */
+/* iOS Standalone Mode Fixes */
+@media all and (display-mode: standalone) {
+  :root {
+    --ios-safe-area-top: env(safe-area-inset-top, 44px);
+    --ios-safe-area-bottom: env(safe-area-inset-bottom, 34px);
+    --ios-safe-area-left: env(safe-area-inset-left, 0px);
+    --ios-safe-area-right: env(safe-area-inset-right, 0px);
+  }
+  
+  .app-wrapper {
+    padding-top: max(var(--spacing-md), 44px) !important;
+    padding-bottom: max(var(--spacing-md), 34px) !important;
+  }
+  
+  .main-header {
+    margin-top: 0 !important;
+  }
+  
+  /* Force proper button styling in standalone mode */
+  .tab-btn {
+    border-radius: var(--radius-full) !important;
+    -webkit-border-radius: var(--radius-full) !important;
+  }
+  
+  .icon-btn {
+    border-radius: var(--radius-full) !important;
+    -webkit-border-radius: var(--radius-full) !important;
+  }
+  
+  .action-btn {
+    border-radius: var(--radius-md) !important;
+    -webkit-border-radius: var(--radius-md) !important;
+  }
+  
+  .card {
+    border-radius: var(--radius-lg) !important;
+    -webkit-border-radius: var(--radius-lg) !important;
+  }
+}
+
+/* iOS-specific styles - FIXED VERSION */
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari specific styles */
   body {
@@ -132,13 +173,13 @@ body {
   select {
     font-size: 16px; /* Prevent iOS zoom */
     -webkit-appearance: none;
-    border-radius: 0;
+    /* Don't override border-radius here */
   }
   
-  /* Fix iOS button styles */
+  /* Fix iOS button styles - CORRECTED */
   button {
     -webkit-appearance: none;
-    border-radius: 0;
+    /* REMOVED: border-radius: 0; - This was breaking the design! */
   }
   
   /* Prevent iOS bounce scrolling */
@@ -484,6 +525,16 @@ button:active {
 
 .tab-btn.active[data-app="workout"] {
   background: var(--workout-primary);
+  color: white;
+}
+
+.tab-btn.active[data-app="water"] {
+  background: var(--water-primary);
+  color: white;
+}
+
+.tab-btn.active[data-app="protein"] {
+  background: var(--protein-primary);
   color: white;
 }
 
@@ -1083,51 +1134,27 @@ input[type="file"]#import-file {
 }
 
 /* Very small screens (iPhone SE, etc.) */
-@media (max-width: 375px) {
+@media (max-width: 400px) {
+  :root {
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+  }
+
   .app-wrapper {
     padding: var(--spacing-xs);
-    padding-top: max(var(--spacing-xs), var(--ios-safe-area-top));
-    padding-bottom: max(var(--spacing-xs), var(--ios-safe-area-bottom));
   }
-  
-  .main-header {
-    padding: var(--spacing-xs) 0;
-  }
-  
+
   .main-header h1 {
     font-size: 1.1rem;
   }
-  
-  .card {
-    padding: var(--spacing-sm);
-  }
-}
-/* Standalone mode fixes */
-@media all and (display-mode: standalone) {
-  :root {
-    --ios-safe-area-top: env(safe-area-inset-top, 44px);
-    --ios-safe-area-bottom: env(safe-area-inset-bottom, 34px);
-  }
-  
-  .app-wrapper {
-    padding-top: max(var(--spacing-md), 44px);
-    padding-bottom: max(var(--spacing-md), 34px);
-  }
-  
-  /* Force proper button styling in standalone mode */
-  .tab-btn {
-    border-radius: var(--radius-full) !important;
-  }
-  
-  .icon-btn {
-    border-radius: var(--radius-full) !important;
-  }
-}
 
-/* Fix the iOS button override that's breaking your design */
-@supports (-webkit-touch-callout: none) {
-  button {
-    -webkit-appearance: none;
-    /* REMOVE: border-radius: 0; ← This line is breaking your buttons! */
+  .tab-btn {
+    padding: var(--spacing-sm) 2px;
+    font-size: 0.8rem;
+    gap: 2px;
+  }
+  
+  .tab-btn .material-icons-round {
+    font-size: 1rem;
   }
 }
