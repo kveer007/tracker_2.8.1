@@ -1158,3 +1158,21 @@ input[type="file"]#import-file {
     font-size: 1rem;
   }
 }
+/* EMERGENCY iOS FIX - TEMPORARY */
+.tab-btn {
+  border-radius: 9999px !important;
+  -webkit-border-radius: 9999px !important;
+}
+
+.icon-btn {
+  border-radius: 9999px !important;
+  -webkit-border-radius: 9999px !important;
+}
+
+/* Force in all modes */
+@media all {
+  .tab-btn, .icon-btn {
+    border-radius: 9999px !important;
+    -webkit-border-radius: 9999px !important;
+  }
+}
